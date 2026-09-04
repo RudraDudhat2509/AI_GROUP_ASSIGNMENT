@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-09-05
+### Added
+- PS3: robot strategy battle, Minimax + Alpha-Beta (#5, #6)
+
 ## [0.2.0] - 2026-09-04
 ### Added
 - PS2: campus route search, Greedy Best-First + A* (#3, #4)
