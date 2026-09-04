@@ -1,63 +1,43 @@
-# PS2 answers - Greedy Best-First vs A*
+# PS2 answers
 
-## Note on the spec's sample output
+## Test case 1 (A to F)
 
-The PDF's sample output shows Greedy Best-First taking the path A -> C -> D -> E -> F.
-Running an actual h(n)-only priority search on that graph gives A -> C -> E -> F instead,
-since E's heuristic (2) is much lower than D's (4), so a real greedy search picks E as
-soon as it's in the frontier. Both routes cost 10 on this particular graph (2+6+2 = 2+3+3+2),
-so the total cost in the PDF is still right, it's just the path string for Greedy that
-doesn't match a faithful simulation. Went with the correct simulation.
-
-## Comparison (sample test case 1: A to F)
-
-| | Greedy Best-First | A* |
+| | Greedy | A* |
 |---|---|---|
 | Path | A -> C -> E -> F | A -> C -> D -> E -> F |
-| Path cost | 10 | 10 |
+| Cost | 10 | 10 |
 | Nodes expanded | 4 | 5 |
-| Optimal? | yes, but by luck | yes, guaranteed |
 
-Path cost tied on this graph, so this one test case alone doesn't show Greedy failing.
-Greedy expanded fewer nodes (4 vs 5) since it beelines toward whatever looks closest
-to the goal instead of checking the accumulated cost, but that speed is not reliable,
-it's only cheap here because it happened to guess right.
+Cost ties on this graph so this one test alone doesn't really show greedy failing. Greedy
+expanded fewer nodes since it just beelines toward whatever looks closest, but that's not
+reliable, it only worked out because it happened to guess right here. Also worth noting
+my greedy path doesn't match the one in the assignment PDF (A -> C -> D -> E -> F), even
+though the cost is the same, checked it by hand in the notebook and E genuinely has a
+lower heuristic than D so a real greedy search picks E, not D.
 
-## Comparison (sample test case 2, made up to expose the gap)
+## Test case 2 (made up on purpose to show greedy losing)
 
 Graph: S-A cost 1 (h(A)=1), S-B cost 2 (h(B)=2), A-T cost 20, B-T cost 2, h(T)=0.
 
-| | Greedy Best-First | A* |
+| | Greedy | A* |
 |---|---|---|
 | Path | S -> A -> T | S -> B -> T |
-| Path cost | 21 | 4 |
-| Nodes expanded | 3 | 4 |
+| Cost | 21 | 4 |
 
-Here Greedy really does lose. It sees A has the lowest heuristic (1) right next to the
-start and commits to it immediately, without knowing the A-T edge costs 20. A* keeps
-track of the real distance travelled (g) alongside the estimate (h), so it doesn't get
-fooled, it finds the actually cheap S -> B -> T route even though B looked slightly
-worse than A at the very first step.
+Here greedy actually loses. It grabs A right away since its heuristic (1) is lower than
+B's (2), without knowing the A-T edge is expensive. A* tracks real distance travelled
+alongside the estimate, so it isn't fooled.
 
-## Why the difference
+## Why
 
-Greedy's priority is f(n) = h(n) only, it is basically asking "which neighbor looks
-closest to the goal right now" and never reconsiders past cost. That makes it fast
-(fewer nodes expanded, no bookkeeping of g) but not optimal, it can walk straight into
-an expensive dead end if the heuristic is misleading close to the start.
+Greedy's priority is just f(n) = h(n), so it only ever asks "which neighbor looks closest
+to the goal", never how much it already spent getting there. Fast, but not optimal.
+A*'s priority is f(n) = g(n) + h(n), it balances what's already spent against the
+estimate, which is why it stays correct as long as the heuristic never overestimates.
 
-A*'s priority is f(n) = g(n) + h(n), so it balances "how much have I already spent" against
-"how much do I estimate is left". As long as the heuristic never overestimates the true
-remaining cost (admissible), A* is guaranteed to find the cheapest path, at the cost of
-expanding more nodes and tracking g for every node it touches.
+## Heuristic quality
 
-## Effectiveness of the heuristic
-
-On the original campus graph the heuristic values (A=7, B=8, C=5, D=4, E=2, F=0) do
-generally decrease as you get closer to F, so they're directionally useful, but they're
-not perfectly calibrated. h(E)=2 makes E look extremely close to the goal (real remaining
-cost from E is 2, so h(E) is actually exact here), which is exactly why Greedy commits to
-it. If the heuristic had been less optimistic about E relative to D, Greedy might have
-picked D instead. This shows heuristic quality directly drives how good (or bad) Greedy's
-decisions are, while A* stays correct regardless as long as the heuristic doesn't
-overestimate.
+On the campus graph the heuristic values do generally shrink as you get closer to F, but
+h(E)=2 happens to be exactly the true remaining distance from E, which is exactly why
+greedy commits to E so eagerly. A tighter/more misleading heuristic would change what
+greedy picks, A* would stay correct either way.
