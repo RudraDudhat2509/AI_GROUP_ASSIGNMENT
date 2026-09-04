@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+## [0.5.0] - 2026-09-05
+### Changed
+- Dropped standalone .py scripts, notebooks are the single deliverable per PS (#9, #10)
+- Added toy-example experiments to all 4 notebooks before each real grid/graph/board (#11-#18)
+- Trimmed the README and all 3 answers.md files
+
 ## [0.4.0] - 2026-09-05
 ### Added
 - PS4: exam timetable optimization, Hill Climbing (#7, #8)
