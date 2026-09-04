@@ -2,6 +2,11 @@
 
 ## [Unreleased]
 
+## [0.4.0] - 2026-09-05
+### Added
+- PS4: exam timetable optimization, Hill Climbing (#7, #8)
+- All 4 problem statements complete.
+
 ## [0.3.0] - 2026-09-05
 ### Added
 - PS3: robot strategy battle, Minimax + Alpha-Beta (#5, #6)
