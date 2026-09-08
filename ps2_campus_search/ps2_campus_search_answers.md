@@ -10,10 +10,10 @@
 
 Cost ties on this graph so this one test alone doesn't really show greedy failing. Greedy
 expanded fewer nodes since it just beelines toward whatever looks closest, but that's not
-reliable, it only worked out because it happened to guess right here. Also worth noting
-my greedy path doesn't match the one in the assignment PDF (A -> C -> D -> E -> F), even
-though the cost is the same, checked it by hand in the notebook and E genuinely has a
-lower heuristic than D so a real greedy search picks E, not D.
+reliable, it only worked out because it happened to guess right here. My greedy path also
+doesn't match the one in the assignment PDF (A -> C -> D -> E -> F), even though the cost
+is the same. Checked it by hand and E has a lower heuristic than D, so a real greedy
+search picks E, not D.
 
 ## Test case 2 (made up on purpose to show greedy losing)
 
