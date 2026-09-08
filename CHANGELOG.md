@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+## [0.7.1] - 2026-09-08
+### Removed
+- PS2 visualizations (#23, #24)
+
 ## [0.7.0] - 2026-09-08
 ### Added
 - Graph diagrams (PS2), nodes-expanded bar charts (PS3), convergence line plot (PS4) (#21, #22)
