@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+## [0.7.0] - 2026-09-08
+### Added
+- Graph diagrams (PS2), nodes-expanded bar charts (PS3), convergence line plot (PS4) (#21, #22)
+
 ## [0.6.0] - 2026-09-08
 ### Changed
 - Restructured all 4 notebooks: one function per cell instead of one giant dump cell, markdown cut to short headers (#19, #20)
