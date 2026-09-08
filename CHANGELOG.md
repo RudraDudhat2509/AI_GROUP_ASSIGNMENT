@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+## [0.6.0] - 2026-09-08
+### Changed
+- Restructured all 4 notebooks: one function per cell instead of one giant dump cell, markdown cut to short headers (#19, #20)
+
 ## [0.5.0] - 2026-09-05
 ### Changed
 - Dropped standalone .py scripts, notebooks are the single deliverable per PS (#9, #10)
