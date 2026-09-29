@@ -2,11 +2,14 @@
 
 ## Comparison table
 
-| Experiment | Initial State | Initial Cost | Final State | Final Cost | Iterations | Neighbors Evaluated |
-|---|---|---|---|---|---|---|
-| 1 | [1,1,2,3,4,2] | 20 | [3,1,1,3,4,2] | 0 | 2 | 54 |
-| 2 | [2,3,1,1,4,4] | 20 | [2,3,3,1,2,4] | 0 | 2 | 54 |
-| 3 | [4,2,3,1,2,3] | 20 | [4,2,2,1,4,3] | 0 | 2 | 54 |
+| Experiment | Initial State | Initial Cost | Final State | Final Cost | Iterations | Neighbors Evaluated | Execution Time |
+|---|---|---|---|---|---|---|---|
+| 1 | [1,1,2,3,4,2] | 20 | [3,1,1,3,4,2] | 0 | 2 | 54 | 0.000712s |
+| 2 | [2,3,1,1,4,4] | 20 | [2,3,3,1,2,4] | 0 | 2 | 54 | 0.000736s |
+| 3 | [4,2,3,1,2,3] | 20 | [4,2,2,1,4,3] | 0 | 2 | 54 | 0.000651s |
+
+Execution time is machine-dependent and will vary run to run, values above are from
+one run of the notebook.
 
 ## Discussion
 
