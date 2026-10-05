@@ -1,5 +1,17 @@
 # PS3 answers
 
+## Using the notebook on a new board
+
+Put the board in the PDF input format into a string (`R C`, the rows, `MAX`, depth) and call
+`run(text)`. It prints Minimax, Alpha-Beta and Alpha-Beta with move ordering for that board.
+
+## Node counts
+
+Nodes Generated counts every child state created. Nodes Expanded counts every state the search
+visits, root and leaves included, so it is always Generated + 1. The assignment says absolute
+counts depend on convention as long as Best Move and Evaluation match, and the numbers below use
+this one.
+
 The original PDF's eval formula mentioned "positional advantage" but never actually
 defined it. The TA clarified it afterward:
 
